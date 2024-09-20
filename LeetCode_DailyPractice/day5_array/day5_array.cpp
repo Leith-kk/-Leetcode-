@@ -1,17 +1,17 @@
-// leetcode 27 £¨Ïàµ±ÓÚÊµÏÖeraseÄÚÖÃº¯Êı£©
+// leetcode 27 ï¼ˆç›¸å½“äºå®ç°eraseå†…ç½®å‡½æ•°ï¼‰
 #include <iostream>
 #include <vector>
 
 using namespace std;
 class Solution {
 public:
-    // ½üËÆ±©Á¦½â·¨£¨±È±©Á¦½â·¨ºÃÒ»¶ª¶ª£¬ÒòÎª±¾ÌâÄ¿²»¹ÜË³Ğò£©
+    // è¿‘ä¼¼æš´åŠ›è§£æ³•ï¼ˆæ¯”æš´åŠ›è§£æ³•å¥½ä¸€ä¸¢ä¸¢ï¼Œå› ä¸ºæœ¬é¢˜ç›®ä¸ç®¡é¡ºåºï¼‰
     int removeElement(vector<int>& nums, int val) {
-        int a[100];                                  // ÓÃÀ´¼ÇÂ¼Êı×éÖĞval¶ÔÓ¦µÄÏÂ±ê
-        int cout = 0;                                // ÓÃÀ´¼ÆÊıÊı×éÖĞval³öÏÖµÄ´ÎÊı
-        int sub = nums.size();                       // Çó³öÊı×éµÄ³¤¶È±ãÓÚÖ®ºóµü´ú
+        int a[100];                                  // ç”¨æ¥è®°å½•æ•°ç»„ä¸­valå¯¹åº”çš„ä¸‹æ ‡
+        int cout = 0;                                // ç”¨æ¥è®¡æ•°æ•°ç»„ä¸­valå‡ºç°çš„æ¬¡æ•°
+        int sub = nums.size();                       // æ±‚å‡ºæ•°ç»„çš„é•¿åº¦ä¾¿äºä¹‹åè¿­ä»£
 
-        // ¼ÇÂ¼Êı×éÖĞvalËùÔÚÏÂ±ê
+        // è®°å½•æ•°ç»„ä¸­valæ‰€åœ¨ä¸‹æ ‡
         for(int i = 0; i < nums.size();++i){         
             if(nums[i] == val){
                 a[i] = 0;
@@ -22,10 +22,10 @@ public:
             }
         }
 
-        // ½«numsÊı×éÖĞÄ©Î²²»ÊÇvalµÄÊıÏòÇ°ÌáÌî²¹valµÄ¿ÕÎ»£¬¸²¸Ç=É¾È¥£¨ÓĞË«Ö¸ÕëÄÇÎ¶ÁË£¡¸ÄÒ»¸Ä¾ÍÊÇË«Ö¸Õë£©
+        // å°†numsæ•°ç»„ä¸­æœ«å°¾ä¸æ˜¯valçš„æ•°å‘å‰æå¡«è¡¥valçš„ç©ºä½ï¼Œè¦†ç›–=åˆ å»ï¼ˆæœ‰åŒæŒ‡é’ˆé‚£å‘³äº†ï¼æ”¹ä¸€æ”¹å°±æ˜¯åŒæŒ‡é’ˆï¼‰
         for(int i = 0;i < nums.size();++i){
             if(nums[i] == val){
-                for(int j = sub - 1;j >= 0;--j){       // ´Ë´¦ÓÃsubµü´úºÜ¹Ø¼ü
+                for(int j = sub - 1;j >= 0;--j){       // æ­¤å¤„ç”¨subè¿­ä»£å¾ˆå…³é”®ï¼Œæ‰¾åˆ°ä¸æ˜¯valçš„æ•°å¹¶åœç•™åœ¨å½“å‰ä½ç½®
                     if(a[j] == 1){
                         nums[i] = nums[j];
                         sub = j;
@@ -37,26 +37,25 @@ public:
         return nums.size() - cout;
     }
 
-    // ÖØµã£ºË«Ö¸Õë·¨£¬×î¶à±éÀúÁ½±éÊı×é
+    // é‡ç‚¹ï¼šåŒæŒ‡é’ˆæ³•ï¼Œæœ€å¤šéå†ä¸¤éæ•°ç»„
     int removeElement(vector<int>& nums, int val) {
         int n = nums.size();
-        int left = 0;                                  // ×óÖ¸ÕëÒÆ¶¯Âı£¬Îª´ı¸³ÖµµÄÔªËØ
-        for (int right = 0; right < n; right++) {      // rightÖ¸ÕëÒÆ¶¯¿ì£¬ÎªÕıÔÚ´¦ÀíµÄÔªËØ
+        int left = 0;                                  // å·¦æŒ‡é’ˆç§»åŠ¨æ…¢ï¼Œä¸ºå¾…èµ‹å€¼çš„å…ƒç´ 
+        for (int right = 0; right < n; right++) {      // rightæŒ‡é’ˆç§»åŠ¨å¿«ï¼Œä¸ºæ­£åœ¨å¤„ç†çš„å…ƒç´ 
             if (nums[right] != val) {
-                nums[left] = nums[right];              // rightÖ¸ÏòÔªËØÎªval£¬right¾ÍºóÒÆÒ»Î»´¦ÀíÏÂÒ»¸öÔªËØ£¬rightÖ¸Ïò·ÇvalÔªËØ£¬¾Í°ÑËü¸³Öµ¸øleft
-                left++;
+                nums[left++] = nums[right];              // rightæŒ‡å‘å…ƒç´ ä¸ºvalï¼Œrightå°±åç§»ä¸€ä½å¤„ç†ä¸‹ä¸€ä¸ªå…ƒç´ ï¼ŒrightæŒ‡å‘évalå…ƒç´ ï¼Œå°±æŠŠå®ƒèµ‹å€¼ç»™left
             }
         }
         return left;
     }  
 
-    // Õë¶Ô´ËÌâµÄË«Ö¸ÕëÓÅ»¯£¬×î¶à±éÀúÒ»±éÊı×é
+    // é’ˆå¯¹æ­¤é¢˜çš„åŒæŒ‡é’ˆä¼˜åŒ–ï¼Œæœ€å¤šéå†ä¸€éæ•°ç»„
     int removeElement(vector<int>& nums, int val) {
-        int left = 0, right = nums.size() - 1;              // leftÔÚÊ×£¬rightÔÚÎ² 
+        int left = 0, right = nums.size() - 1;              // leftåœ¨é¦–ï¼Œrightåœ¨å°¾ 
         while (left < right) {
             if (nums[left] == val) {
                 nums[left] = nums[right];
-                right--;                                    // leftÓërightÏòÖĞ¼äÒÆ¶¯
+                right--;                                    // leftä¸rightå‘ä¸­é—´ç§»åŠ¨
             } else {
                 left++;
             }

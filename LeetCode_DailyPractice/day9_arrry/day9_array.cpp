@@ -7,25 +7,25 @@ using namespace std;
 
 class Solution {
 public:
-    // ¶¨Òå¹şÏ£±í´æ·Å¼üÖµ¶Ô
+    // å®šä¹‰å“ˆå¸Œè¡¨å­˜æ”¾é”®å€¼å¯¹
     int totalFruit(vector<int>& fruits) {
         int n = fruits.size();
-        unordered_map<int,int> trees;                 // ´æ´¢¼üÖµ¶Ô
+        unordered_map<int,int> trees;                 // å­˜å‚¨é”®å€¼å¯¹
 
         int left = 0, sum = 0;
-        for(int right = 0;right < n; ++right){        // ÒÆ¶¯´°¿Ú·¨
-            ++trees[fruits[right]];                   // right¶ÔÓ¦µÄ¼üÖµ¶ÔÒÑ´æÔÚ¾Í++value£¬Èô²»´æÔÚ¾ÍĞÂ½¨Ò»¸ö¼üÖµ¶ÔÈ»ºóvalue++;
+        for(int right = 0;right < n; ++right){        // ç§»åŠ¨çª—å£æ³•
+            ++trees[fruits[right]];                   // rightå¯¹åº”çš„é”®å€¼å¯¹å·²å­˜åœ¨å°±++valueï¼Œè‹¥ä¸å­˜åœ¨å°±æ–°å»ºä¸€ä¸ªé”®å€¼å¯¹ç„¶åvalue++;
 
-            while(trees.size() > 2){                  // ¼üÖµ¶Ô¸öÊı´óÓÚ2
-                auto it = trees.find(fruits[left]);   // Ñ­»·ÕÒµ½fruits[left]
-                --it->second;                         // Ïàµ±ÓÚvalue--
-                if(it->second == 0){                  // left¶ÔÓ¦µÄÔªËØ¸öÊıÎª0¾ÍÌŞ³ıleft¶ÔÓ¦¼üÖµ¶Ô
+            while(trees.size() > 2){                  // é”®å€¼å¯¹ä¸ªæ•°å¤§äº2
+                auto it = trees.find(fruits[left]);   // å¾ªç¯æ‰¾åˆ°fruits[left]
+                --it->second;                         // ç›¸å½“äºvalue--
+                if(it->second == 0){                  // leftå¯¹åº”çš„å…ƒç´ ä¸ªæ•°ä¸º0å°±å‰”é™¤leftå¯¹åº”é”®å€¼å¯¹
                     trees.erase(it);
                 }
-                ++left;                               // ÒÆ¶¯´°¿Ú·¨ÒÆ¶¯ÆğÊ¼¶Ë
+                ++left;                               // ç§»åŠ¨çª—å£æ³•ç§»åŠ¨èµ·å§‹ç«¯
             }
 
-            sum = max(sum, right - left + 1);         // ´Ë´¦ÎªºÎ»¹Òª+1£¿ÒòÎª´°¿ÚÖĞÊ¼ÖÕÖ»ÓĞÁ½ÖÖË®¹û
+            sum = max(sum, right - left + 1);         // æ­¤å¤„ä¸ºä½•è¿˜è¦+1ï¼Ÿå› ä¸ºçª—å£ä¸­å§‹ç»ˆåªæœ‰ä¸¤ç§æ°´æœ
         }
         return sum;
     }

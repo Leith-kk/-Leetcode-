@@ -5,42 +5,42 @@ using namespace std;
 class Solution {
 public:
     int binary_search(int *nums,int n,int target) {
-       if(nums == NULL || n == 0){               // ±ÜÃâ¿ÕÊı×é
+       if(nums == NULL || n == 0){               // é¿å…ç©ºæ•°ç»„
         return -2;
        } 
-       int left = 0, right = n - 1;             // sizeof»áÇóÈ¡Õû¸öÄÚ´æ³¤¶È
+       int left = 0, right = n - 1;             // sizeofä¼šæ±‚å–æ•´ä¸ªå†…å­˜é•¿åº¦
        int mid = 0;
-       while(left <= right){                     // ÈôÊÇ±ÕÇø¼ä[left,right]£ºleft<=right,ÈôÊÇ¿ªÇø¼ä[left,right)left<right
-           mid = (right - left) / 2 + left;      // midÕâÑù¼ÆËãÊÇÎªÁË±ÜÃâÊı×éÔªËØ¹ı¶àÊ±Òç³ö
-           if(nums[mid] == target){              // ½«½ØÖ¹Ìõ¼şÌáµ½Ç°Ãæ¶Ô²¿·Ö²âÊÔ¶øÑÔ¿ÉÒÔ¼õÉÙ¼ÆËãÊ±¼ä
+       while(left <= right){                     // è‹¥æ˜¯é—­åŒºé—´[left,right]ï¼šleft<=right,è‹¥æ˜¯å¼€åŒºé—´[left,right)left<right
+           mid = (right - left) / 2 + left;      // midè¿™æ ·è®¡ç®—æ˜¯ä¸ºäº†é¿å…æ•°ç»„å…ƒç´ è¿‡å¤šæ—¶æº¢å‡º
+           if(nums[mid] == target){              // å°†æˆªæ­¢æ¡ä»¶æåˆ°å‰é¢å¯¹éƒ¨åˆ†æµ‹è¯•è€Œè¨€å¯ä»¥å‡å°‘è®¡ç®—æ—¶é—´
                return mid;
            }else if(nums[mid] < target){         
                left = mid + 1;
            }else{
-               right = mid - 1;                   // ÈôÊÇ¿ªÇø¼ä£ºright = mid
+               right = mid - 1;                   // è‹¥æ˜¯å¼€åŒºé—´ï¼šright = mid
            }
        }
        return -1;
     }
 
-    int search(int *nums, int n, int left, int right, int target){     // µİ¹é·¨
-        if(nums == NULL || n == 0){                                    // ÅÅ³ı¿ÕÊı×é
+    int search(int *nums, int n, int left, int right, int target){     // é€’å½’æ³•
+        if(nums == NULL || n == 0){                                    // æ’é™¤ç©ºæ•°ç»„
         return -2;
         }
         
         int mid = left + (right - left) / 2;
 
-        if(left > right){                      // ½ØÖ¹Ìõ¼ş£ºÃ»ÓĞÕÒµ½target
+        if(left > right){                      // æˆªæ­¢æ¡ä»¶ï¼šæ²¡æœ‰æ‰¾åˆ°target
             return -1;
         }
 
-        if(nums[mid] == target){               // ½ØÖ¹Ìõ¼ş£ºÒÑ¾­ÕÒµ½target
+        if(nums[mid] == target){               // æˆªæ­¢æ¡ä»¶ï¼šå·²ç»æ‰¾åˆ°target
             return mid;
         }
 
         while(left <= right){
             if(nums[mid] > target){
-                return search(nums, mid - left, left, mid - 1, target);   // ×¢ÒâÊÇreturn
+                return search(nums, mid - left, left, mid - 1, target);   // æ³¨æ„æ˜¯return
             }else{
                 return search(nums, right - mid, mid + 1, right, target);
             }
@@ -53,11 +53,11 @@ int main(){
     int n;
     int nums[1000];
 
-    cout << "ÇëÊäÈëÊı×é³¤¶È£º" << endl;
+    cout << "è¯·è¾“å…¥æ•°ç»„é•¿åº¦ï¼š" << endl;
     cin >> n;
-    cout<<"ÇëÊäÈëÄ¿±êÖµ£º"<<endl;
+    cout<<"è¯·è¾“å…¥ç›®æ ‡å€¼ï¼š"<<endl;
     cin >> target;
-    cout << "ÇëÊäÈë´ı²éÕÒÔªËØ£º" << endl;
+    cout << "è¯·è¾“å…¥å¾…æŸ¥æ‰¾å…ƒç´ ï¼š" << endl;
     for(int i = 0;i < n;++i){
         cin >> nums[i];
     }
@@ -66,7 +66,7 @@ int main(){
     // cout << sizeof(nums) << endl;
 
     Solution s;
-    cout << "ÏàÓ¦Î»ÖÃ£º" << s.binary_search(nums, n, target) << endl;
-    cout << "ÏàÓ¦Î»ÖÃ£¨µİ¹é£©" << s.search(nums, n, left, right, target) << endl;
+    cout << "ç›¸åº”ä½ç½®ï¼š" << s.binary_search(nums, n, target) << endl;
+    cout << "ç›¸åº”ä½ç½®ï¼ˆé€’å½’ï¼‰" << s.search(nums, n, left, right, target) << endl;
     return 0;
 }
